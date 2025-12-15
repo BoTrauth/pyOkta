@@ -104,6 +104,12 @@ okta-manager groups delete GROUP_ID
 
 # Delete ALL groups except protected ones (requires confirmation)
 okta-manager groups delete-all --log-dir Logs
+```
+
+**Note:** `delete-all` will skip groups listed in `PROTECTED_GROUP_IDS` in your `.env` file.
+
+## Application Management
+
 ### List Applications
 ```powershell
 # List all applications (displays formatted list with label, ID, and status)
@@ -121,7 +127,7 @@ Found 7 applications
   Test App                                  0oa22tx82jcE9a4wT0h8      INACTIVE
   ...
 ```
-### Delete Group
+
 ### Delete Applications
 ```powershell
 # Delete single application (requires confirmation)
@@ -132,21 +138,6 @@ okta-manager apps delete-all --log-dir Logs
 ```
 
 **Note:** `delete-all` will skip applications listed in `PROTECTED_APP_IDS` in your `.env` file.
-## Application Management
-
-### List Applications
-```powershell
-# List all applications
-okta-manager apps list
-
-# Save to JSON
-okta-manager apps list --output apps.json
-```
-
-### Delete Application
-```powershell
-okta-manager apps delete APP_ID
-```
 
 ## Bulk Cleanup
 
