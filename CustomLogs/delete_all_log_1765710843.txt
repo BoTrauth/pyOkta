@@ -1,0 +1,44 @@
+Delete all users started at 2025-12-14 13:14:03
+Total users to process: 18
+
+  Deactivated capoperationsadmin@smartplantcloud.net (ID: 00uyc3gn6eO6zU8ME697)
+SUCCESS: Deleted capoperationsadmin@smartplantcloud.net (ID: 00uyc3gn6eO6zU8ME697, was UserStatus.STAGED)
+  Deactivated capsupport@smartplantcloud.net (ID: 00uyc3jhx7nGGaJNf697)
+SUCCESS: Deleted capsupport@smartplantcloud.net (ID: 00uyc3jhx7nGGaJNf697, was UserStatus.STAGED)
+  Deactivated capsalesadmin@smartplantcloud.net (ID: 00uyc3ksz8ZSXRIch697)
+SUCCESS: Deleted capsalesadmin@smartplantcloud.net (ID: 00uyc3ksz8ZSXRIch697, was UserStatus.STAGED)
+  Deactivated capcloudops@smartplantcloud.net (ID: 00uyc3lt2yqWSiadl697)
+SUCCESS: Deleted capcloudops@smartplantcloud.net (ID: 00uyc3lt2yqWSiadl697, was UserStatus.STAGED)
+  Deactivated 1ad994701175426@test.com (ID: 00uyc427hwSiCN1Cs697)
+SUCCESS: Deleted 1ad994701175426@test.com (ID: 00uyc427hwSiCN1Cs697, was UserStatus.STAGED)
+  Deactivated 759317701174059@test.com (ID: 00uyc44x7xU6Pq408697)
+SUCCESS: Deleted 759317701174059@test.com (ID: 00uyc44x7xU6Pq408697, was UserStatus.STAGED)
+  Deactivated 0ca91a704630162@test.com (ID: 00uyc51fe1UQ25FWe697)
+SUCCESS: Deleted 0ca91a704630162@test.com (ID: 00uyc51fe1UQ25FWe697, was UserStatus.STAGED)
+  Deactivated afb0e1704631346@test.com (ID: 00uyc52c8mB2xwpSd697)
+SUCCESS: Deleted afb0e1704631346@test.com (ID: 00uyc52c8mB2xwpSd697, was UserStatus.STAGED)
+  Deactivated tenantOwner@test.com (ID: 00uy953qylrzZaJuw697)
+SUCCESS: Deleted tenantOwner@test.com (ID: 00uy953qylrzZaJuw697, was UserStatus.PROVISIONED)
+  Deactivated 1b32a3bb@hexagon.com (ID: 00uy9635uxVYseYEU697)
+SUCCESS: Deleted 1b32a3bb@hexagon.com (ID: 00uy9635uxVYseYEU697, was UserStatus.PROVISIONED)
+  Deactivated capcloudadmin@smartplantcloud.net (ID: 00uyc2py277lpI24C697)
+SUCCESS: Deleted capcloudadmin@smartplantcloud.net (ID: 00uyc2py277lpI24C697, was UserStatus.PROVISIONED)
+  Deactivated capviewer@smartplantcloud.net (ID: 00uyc2qlzpvvLzA3U697)
+SUCCESS: Deleted capviewer@smartplantcloud.net (ID: 00uyc2qlzpvvLzA3U697, was UserStatus.PROVISIONED)
+  Deactivated TestUser.RoleTests@smartplantcloud.net (ID: 00uyc2r4dh2w6daJj697)
+SUCCESS: Deleted TestUser.RoleTests@smartplantcloud.net (ID: 00uyc2r4dh2w6daJj697, was UserStatus.PROVISIONED)
+  Deactivated capservices@smartplantcloud.net (ID: 00uyc2vjki3GxErac697)
+SUCCESS: Deleted capservices@smartplantcloud.net (ID: 00uyc2vjki3GxErac697, was UserStatus.PROVISIONED)
+  Deactivated capadmin@smartplantcloud.net (ID: 00uyc2vtsk4GhllPc697)
+SUCCESS: Deleted capadmin@smartplantcloud.net (ID: 00uyc2vtsk4GhllPc697, was UserStatus.PROVISIONED)
+  Deactivated captenantadmin@smartplantcloud.net (ID: 00uyc2w32lknogkZE697)
+SUCCESS: Deleted captenantadmin@smartplantcloud.net (ID: 00uyc2w32lknogkZE697, was UserStatus.PROVISIONED)
+  Deactivated capbusinessadmin@smartplantcloud.net (ID: 00uyc2xes3WI5pcgh697)
+SUCCESS: Deleted capbusinessadmin@smartplantcloud.net (ID: 00uyc2xes3WI5pcgh697, was UserStatus.PROVISIONED)
+PROTECTED: Skipped boaz.trauthwein@hexagon.com (ID: 00uw7u8tk76VCJDy6697, Status: UserStatus.ACTIVE)
+
+
+Deletion completed at 2025-12-14 13:14:44
+Successful: 17
+Failed: 0
+Skipped (Protected): 1
