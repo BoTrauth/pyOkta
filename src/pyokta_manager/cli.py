@@ -22,11 +22,12 @@ def async_command(f):
 
 @click.group()
 @click.option("--env-file", type=click.Path(exists=True), help="Path to .env file")
+@click.option("--env", type=click.Choice(['dev', 'qa', 'prev'], case_sensitive=False), help="Environment to use (dev, qa, or prev)")
 @click.pass_context
-def cli(ctx, env_file):
+def cli(ctx, env_file, env):
     """PyOkta Manager - Okta user, group, and application management tool."""
     try:
-        config = OktaConfig(env_file)
+        config = OktaConfig(env_file, environment=env)
         ctx.obj = OktaClientWrapper(config)
     except ValueError as e:
         click.echo(f"❌ Configuration error: {e}", err=True)
@@ -261,6 +262,45 @@ async def apps_delete_all(client, log_dir):
     from .app_operations import delete_all_applications
 
     await delete_all_applications(client, log_dir)
+
+
+# ==================== LIST ALL COMMAND ====================
+
+
+@cli.command("list-all")
+@click.option("--output-dir", "-o", help="Save outputs to directory (creates separate files for users, groups, apps)")
+@click.pass_obj
+@async_command
+async def list_all(client, output_dir):
+    """List all users, groups, and applications."""
+    from .user_operations import list_users
+    from .group_operations import list_groups
+    from .app_operations import list_applications
+
+    click.echo("=" * 80)
+    click.echo("USERS")
+    click.echo("=" * 80)
+    users_output = f"{output_dir}/users.json" if output_dir else None
+    await list_users(client, output_file=users_output)
+    
+    click.echo()
+    click.echo("=" * 80)
+    click.echo("GROUPS")
+    click.echo("=" * 80)
+    groups_output = f"{output_dir}/groups.json" if output_dir else None
+    await list_groups(client, output_file=groups_output)
+    
+    click.echo()
+    click.echo("=" * 80)
+    click.echo("APPLICATIONS")
+    click.echo("=" * 80)
+    apps_output = f"{output_dir}/apps.json" if output_dir else None
+    await list_applications(client, output_file=apps_output)
+    
+    click.echo()
+    click.echo("=" * 80)
+    click.echo("Summary complete")
+    click.echo("=" * 80)
 
 
 # ==================== CLEANUP COMMANDS ====================

@@ -165,4 +165,3 @@ For issues not covered here:
 1. Check the full documentation in `README.md`
 2. Review configuration in `.env`
 3. Verify Okta API credentials in Okta admin console
-4. Check archived scripts in `archive/` for reference

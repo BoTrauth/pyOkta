@@ -8,33 +8,67 @@ A professional CLI tool for managing Okta users, groups, and applications with s
 # Install with UV
 uv venv && .\.venv\Scripts\Activate.ps1 && uv pip install -e .
 
-# Configure credentials
-Copy-Item .env.example .env
-# Edit .env with your Okta credentials
+# Configure credentials for your environment
+Copy-Item .env.template .env.dev
+# Edit .env.dev with your DEV-Test Okta credentials
 
-# Start using
-okta-manager users list
+# Start using (specify environment)
+okta-manager --env dev users list
 ```
+
+## Multiple Environment Support
+
+PyOkta Manager supports multiple Okta environments:
+
+```powershell
+# Use DEV environment
+okta-manager --env dev users list
+
+# Use QA environment  
+okta-manager --env qa apps list
+
+# Use PREV environment
+okta-manager --env prev groups list
+```
+
+Configuration files:
+- `.env.dev` - DEV-Test environment
+- `.env.qa` - QA-Test environment
+- `.env.prev` - PREV-Test environment
+
+See [Configuration Guide](docs/configuration.md) for details.
 
 ## Common Commands
 
 ### Users
 ```powershell
-okta-manager users list                    # List all users
-okta-manager users list --status ACTIVE    # Filter by status
-okta-manager users export                  # Export by status to files
-okta-manager users create -f John -l Doe -e john@example.com
-okta-manager users activate USER_ID
-okta-manager users deactivate USER_ID
-okta-manager users delete-deprovisioned    # Bulk delete
+okta-manager --env dev users list                    # List all users
+okta-manager --env dev users list --status ACTIVE    # Filter by status
+okta-manager --env dev users export                  # Export by status to files
+okta-manager --env dev users create -f John -l Doe -e john@example.com
+okta-manager --env dev users activate USER_ID
+okta-manager --env dev users deactivate USER_ID
+okta-manager --env dev users delete-deprovisioned    # Bulk delete
 ```
 
 ### Groups
 ```powershell
-okta-manager groups list
-okta-manager groups create -n "Team Name"
-okta-manager groups add-user GROUP_ID USER_ID
-okta-manager groups delete GROUP_ID
+okta-manager --env dev groups list
+okta-manager --env dev groups create -n "Team Name"
+okta-manager --env dev groups add-user GROUP_ID USER_ID
+okta-manager --env dev groups delete GROUP_ID
+```
+
+### Applications
+```powershell
+okta-manager --env dev apps list
+okta-manager --env dev apps delete APP_ID
+```
+
+### Cleanup
+```powershell
+# Delete all non-protected resources
+okta-manager --env dev cleanup
 ```
 
 ### Applications
@@ -150,7 +184,6 @@ pyOkta/
 ├── src/pyokta_manager/       # Main package
 ├── docs/                     # Documentation
 ├── tests/                    # Tests
-├── archive/                  # Old scripts (reference)
 ├── Output/                   # JSON exports
 ├── Logs/                     # Deletion logs
 ├── pyproject.toml            # Package config
@@ -178,12 +211,6 @@ See [API Reference](docs/api-reference.md) for package documentation.
 ✅ Confirmation prompts for destructive operations  
 ✅ Comprehensive logging  
 ✅ Clear error messages
-
-## Migration from Old Scripts
-
-See [Migration Guide](docs/migration.md) for converting old scripts to new CLI commands.
-
-Old scripts are archived in `archive/` for reference.
 
 ## License
 

@@ -10,21 +10,36 @@ from dotenv import load_dotenv
 class OktaConfig:
     """Manages Okta configuration from environment variables."""
 
-    def __init__(self, env_file: Optional[str] = None):
+    def __init__(self, env_file: Optional[str] = None, environment: Optional[str] = None):
         """
         Initialize Okta configuration.
 
         Args:
-            env_file: Path to .env file. If None, searches for .env in project root.
+            env_file: Path to .env file. If None, searches for .env or .env.{environment} in project root.
+            environment: Environment name (e.g., 'dev', 'qa', 'prev'). If provided, loads .env.{environment}.
         """
         if env_file:
             load_dotenv(env_file)
         else:
-            # Search for .env in project root
+            # Search for .env or .env.{environment} in project root
             project_root = Path(__file__).parent.parent.parent
-            env_path = project_root / ".env"
-            if env_path.exists():
-                load_dotenv(env_path)
+            
+            if environment:
+                env_path = project_root / f".env.{environment}"
+                if not env_path.exists():
+                    raise ValueError(
+                        f"Environment file .env.{environment} not found.\n"
+                        f"Available environments: dev, qa, prev"
+                    )
+            else:
+                env_path = project_root / ".env"
+                if not env_path.exists():
+                    raise ValueError(
+                        f".env file not found.\n"
+                        f"Please create a .env file or specify an environment with --env"
+                    )
+            
+            load_dotenv(env_path)
 
         self._validate_config()
 

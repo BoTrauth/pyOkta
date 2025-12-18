@@ -31,6 +31,8 @@ ENV/
 
 # Environment variables
 .env
+.env.*
+!.env.template
 .env.local
 *.key
 
