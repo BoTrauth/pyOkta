@@ -29,9 +29,10 @@ async def list_users(client, status: Optional[str] = None, output_file: Optional
     # Print user list
     for user in users:
         name = f"{getattr(user.profile, 'firstName', '')} {getattr(user.profile, 'lastName', '')}".strip()
-        email = user.profile.email
+        user_id = user.id
         status_str = user.status
-        print(f"  {email:<40} {name:<30} {status_str}")
+        email = user.profile.email
+        print(f"  {name:<30} {user_id:<25} {status_str:<20} {email}")
 
     if output_file:
         # Convert users to serializable format

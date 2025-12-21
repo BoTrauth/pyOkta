@@ -277,30 +277,16 @@ async def list_all(client, output_dir):
     from .group_operations import list_groups
     from .app_operations import list_applications
 
-    click.echo("=" * 80)
-    click.echo("USERS")
-    click.echo("=" * 80)
     users_output = f"{output_dir}/users.json" if output_dir else None
     await list_users(client, output_file=users_output)
     
     click.echo()
-    click.echo("=" * 80)
-    click.echo("GROUPS")
-    click.echo("=" * 80)
     groups_output = f"{output_dir}/groups.json" if output_dir else None
     await list_groups(client, output_file=groups_output)
     
     click.echo()
-    click.echo("=" * 80)
-    click.echo("APPLICATIONS")
-    click.echo("=" * 80)
     apps_output = f"{output_dir}/apps.json" if output_dir else None
     await list_applications(client, output_file=apps_output)
-    
-    click.echo()
-    click.echo("=" * 80)
-    click.echo("Summary complete")
-    click.echo("=" * 80)
 
 
 # ==================== CLEANUP COMMANDS ====================
