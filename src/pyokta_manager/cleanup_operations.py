@@ -86,7 +86,7 @@ async def cleanup_all(client, skip_apps: bool = False, skip_groups: bool = False
     # Cleanup users
     if not skip_users:
         print("\n👤 === Cleaning up Users ===")
-        users = await client.get_all_users()
+        users = await client.get_all_users(query_params={"search": "status pr"})
         for user in users:
             if client.is_protected_user(user):
                 user_login = getattr(user.profile, "login", "unknown")

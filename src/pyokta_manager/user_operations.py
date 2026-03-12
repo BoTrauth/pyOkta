@@ -17,9 +17,12 @@ async def list_users(client, status: Optional[str] = None, output_file: Optional
     Returns:
         List of users.
     """
-    query_params = None
+    # By default, Okta API only returns ACTIVE users. We need to explicitly request all statuses.
     if status:
         query_params = {"filter": f'status eq "{status}"'}
+    else:
+        # Request all users regardless of status
+        query_params = {"search": 'status pr'}
 
     users = await client.get_all_users(query_params=query_params)
 
@@ -280,8 +283,8 @@ async def delete_all_users(client, log_dir: str = "Logs"):
     """
     import time
 
-    # Get all users regardless of status
-    users = await client.get_all_users()
+    # Get all users regardless of status - use search parameter to include all statuses
+    users = await client.get_all_users(query_params={"search": "status pr"})
 
     if not users:
         print("No users found.")

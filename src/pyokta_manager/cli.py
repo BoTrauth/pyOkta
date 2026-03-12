@@ -1,6 +1,7 @@
 """Command-line interface for PyOkta Manager."""
 
 import asyncio
+import functools
 import sys
 from pathlib import Path
 
@@ -13,10 +14,10 @@ from .config import OktaConfig
 def async_command(f):
     """Decorator to run async click commands."""
 
+    @functools.wraps(f)
     def wrapper(*args, **kwargs):
         return asyncio.run(f(*args, **kwargs))
 
-    wrapper.__name__ = f.__name__
     return wrapper
 
 
